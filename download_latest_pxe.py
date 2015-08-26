@@ -25,7 +25,7 @@ complete_url = compose_and_fedora_ver + 'Cloud_Atomic/x86_64/pxetolive/'
 r = requests.get(complete_url)
 text = r.text
 m = re.findall('href="([^"?]+)"', text)
-m.pop(2) # don't list rootfs img
+m = m.pop(3) # don't list rootfs img
 
 
 # download all files from pxetolive dir
