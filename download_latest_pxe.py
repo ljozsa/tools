@@ -32,13 +32,15 @@ for file in m[1:]:
 	total_length = int(r.headers['content-length'])
 	with open(file, 'wb') as f:
 		dl = 0
-		print "Downloading %s" %  file
+		sys.stderr.write("Downloading %s\n" %  file)
 		for chunk in r.iter_content(chunk_size=1024):
 			if chunk:
 				dl += len(chunk)
 				f.write(chunk)
 				f.flush()
 				done = int(50 * dl / total_length)
-				sys.stdout.write("\r[%s%s]" % ('=' * done, ' ' * (50-done)) )
-				sys.stdout.flush()
-		print '\n'
+				sys.stderr.write("\r[%s%s]" % ('=' * done, ' ' * (50-done)) )
+				sys.stderr.flush()
+		sys.stderr.write("\n\n")
+
+sys.stdout.write(complete_url)
