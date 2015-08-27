@@ -4,11 +4,11 @@ RUN sed -n '/rhel-7-server-rt-rpms/,/^$/ s/enabled = 1/enabled = 0/' /etc/yum.re
 RUN yum-config-manager --save --setopt=rhel-7-server-rt-rpms.skip_if_unavailable=true
 RUN yum-config-manager --save --setopt=rhel-sap-hana-for-rhel-7-server-rpms.skip_if_unavailable=true
 RUN yum -y install dnsmasq wget iptables iproute procps syslinux python-requests
-RUN cp /usr/share/syslinux/menu.c32 ./
 RUN wget --no-check-certificate https://raw.github.com/jpetazzo/pipework/master/pipework
 RUN chmod +x pipework
 RUN mkdir /tftp
 WORKDIR /tftp
+RUN cp /usr/share/syslinux/menu.c32 ./
 RUN mkdir pxelinux.cfg
 RUN wget https://raw.githubusercontent.com/ljozsa/tools/master/download_latest_pxe.py
 RUN chmod a+x download_latest_pxe.py
