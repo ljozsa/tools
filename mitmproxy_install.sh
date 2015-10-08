@@ -17,4 +17,4 @@ yum -y install gcc python-devel libxml2-devel libxslt-devel libffi-devel openssl
 pip install mitmproxy
 
 # run mitmproxy
-tmux new-session -n mitm-proxy -d \; send -t mitm-proxy mitmproxy ENTER
+tmux new-session -n mitm-proxy -d \; send -t mitm-proxy mitmproxy -p 3128 ENTER
